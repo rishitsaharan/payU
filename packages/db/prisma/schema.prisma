@@ -20,16 +20,60 @@ model User {
   number String @unique
   password String
   onRampTransactions OnRampTransactions[]
-  Balances Balances[]
+  balance Int @default(0)
+  lockedBalance Int @default(0)
+  balanceHistory BalanceHistory[]
+  sentTransfers p2pTransfer[] @relation(name : "fromUserRelation")
+  receivedTransfers p2pTransfer[] @relation(name : "toUserRelation")
+  Deposits DuesForMerchant[]
+  Dues DuesForUser[]
 }
 
+model BalanceHistory {
+  id        Int     @id @default(autoincrement())
+  userId    Int
+  user      User    @relation(fields: [userId], references: [id])
+  balance   Int
+  timestamp DateTime
+}
+model BalanceHistoryMerchant{
+  id        Int     @id @default(autoincrement())
+  merchantId    Int
+  merchant      Merchant    @relation(fields: [merchantId], references: [id])
+  balance   Int
+  timestamp DateTime
+}
 model Merchant {
   id Int @id @default(autoincrement())
   email String @unique
   name String?
+  balance Int @default(0)
+  lockedBalance Int @default(0)
   auth_type AuthType
+  dues DuesForMerchant[]
+  deposits DuesForUser[]
+  onRampTransactions OnRampTransactionsMerchant[]
+  balanceHistory BalanceHistoryMerchant[]
 }
 
+model DuesForUser{
+  id Int @id @default(autoincrement())
+  merchantId Int
+  merchant Merchant @relation(fields: [merchantId], references: [id])
+  userId Int
+  user User @relation(fields: [userId], references: [id])
+  amount Int
+  dueStatus DueStatus @default(Due)
+}
+model DuesForMerchant{
+  id Int @id @default(autoincrement())
+  merchantId Int
+  merchant Merchant @relation(fields: [merchantId], references: [id])
+  userId Int
+  user User @relation(fields: [userId], references: [id])
+  amount Int
+  dueStatus DueStatus @default(Due)
+}
 model OnRampTransactions{
   id Int @id @default(autoincrement())
   status OnRampStatus
@@ -40,13 +84,28 @@ model OnRampTransactions{
   userId Int
   user User @relation(fields: [userId], references: [id])
 }
-
-model Balances{
+model OnRampTransactionsMerchant{
   id Int @id @default(autoincrement())
-  userId Int
+  status OnRampStatus
+  token String @unique
+  provider String
   amount Int
-  locked Int
-  user User @relation(fields: [userId], references: [id])
+  startTime DateTime
+  transactionType transactionType
+  merchantId Int
+  merchant Merchant @relation(fields: [merchantId], references: [id])
+}
+
+model p2pTransfer{
+  id Int @id @default(autoincrement())
+  fromUserNumber String
+  fromUserId Int
+  fromUser User @relation(name: "fromUserRelation", fields: [fromUserId], references: [id])
+  toUserNumber String
+  toUserId Int
+  toUser User @relation(name: "toUserRelation", fields: [toUserId], references: [id])
+  amount Int
+  startTime DateTime
 }
 
 enum AuthType{
@@ -57,4 +116,12 @@ enum OnRampStatus{
   Success
   Failure
   Processing
+}
+enum DueStatus{
+  Due
+  Paid
+}
+enum transactionType{
+  Credit
+  Debit
 }
