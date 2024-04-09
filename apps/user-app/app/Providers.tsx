@@ -6,6 +6,9 @@ export const Providers = ({children} : {children : React.ReactNode}) => {
     return(
         <RecoilRoot>
             <SessionProvider>
+
+
+                
                 {children}
             </SessionProvider>
         </RecoilRoot>
