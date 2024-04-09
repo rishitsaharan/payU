@@ -3,9 +3,9 @@ import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
 import { authOptions } from '../../lib/auth';
 
-export async function GET(req: NextRequest) {
+export async function GET() {
+  const session = await getServerSession(authOptions);
   try {
-    const session = await getServerSession(authOptions);
     const userId = session?.user?.id;
     if(!userId){
       return NextResponse.json({message : "Please login"})

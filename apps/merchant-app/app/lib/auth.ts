@@ -11,7 +11,7 @@ export const authOptions = {
     callbacks: {
         // TODO: can u fix the type here? Using any is bad
         async session({ token, session }: any) {
-            const { sub, name, email } = token;
+            const { name, email } = token;
 
             // Check if the user exists in the database
             let merchant = await prisma.merchant.findUnique({

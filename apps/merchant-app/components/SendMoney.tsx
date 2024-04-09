@@ -40,6 +40,7 @@ export const SendMoney = () => {
         <div className="flex justify-center pt-4">
             <Button onClick={async () => {
                 const response = await handleWithdrawMoney(amount * 100, provider);
+                console.log(redirectUrl + " "+accNumber);
                 alert(response.message);
             }}>
                 Send Money

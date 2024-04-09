@@ -2,11 +2,9 @@
 import { useEffect, useState } from 'react';
 import Chart from "chart.js";
 import axios from 'axios';
-import { useRef } from 'react';
 import { Card } from '@repo/ui/card';
 
 const BalanceGraph = () => {
-    const chartRef = useRef<HTMLCanvasElement>(null);
     const [balanceData, setBalanceData] = useState<{
         userId : Number;
         balance : Number;
@@ -27,7 +25,7 @@ const BalanceGraph = () => {
     if (balanceData.length === 0) return;
     const canvas = document.getElementById('myChart') as HTMLCanvasElement;
         const ctx = canvas.getContext('2d');
-        var myChart = new Chart(ctx || "", {
+        new Chart(ctx || "", {
             type: 'line',
             data: {
                 labels: balanceData.map(balance => String(new Date(balance.timestamp))),

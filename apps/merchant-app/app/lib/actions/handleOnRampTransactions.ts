@@ -1,4 +1,4 @@
-'use server'
+
 import prisma from "@repo/db/client"
 import { getServerSession } from "next-auth"
 import { authOptions } from "../auth"
@@ -29,7 +29,7 @@ export const handleOnRampTransactions = async (amount : number, provider : strin
     })
 
     try{
-        const response = await axios.post(`http://localhost:3002/api/merchant/getMoney`, {
+        await axios.post(`http://localhost:3002/api/merchant/getMoney`, {
             token,
             merchantId,
             amount

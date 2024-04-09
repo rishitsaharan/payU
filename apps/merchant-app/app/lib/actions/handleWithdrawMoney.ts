@@ -1,4 +1,4 @@
-'use server'
+
 import prisma from "@repo/db/client"
 import { getServerSession } from "next-auth"
 import { authOptions } from "../auth"
@@ -34,7 +34,7 @@ export default async function handleWithdrawMoney(amount : number, provider : st
     })
 
     try{
-        const response = await axios.post(`http://localhost:3002/api/merchant/sendMoney`, {
+        await axios.post(`http://localhost:3002/api/merchant/sendMoney`, {
             token,
             merchantId,
             amount

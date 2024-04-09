@@ -1,3 +1,5 @@
+'use client'
+
 import BalanceGraph from "../../../components/BalanceGraph";
 import { DashboardStats } from "../../../components/DashboardStats";
 

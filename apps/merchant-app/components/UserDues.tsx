@@ -4,8 +4,7 @@ import { Button } from "@repo/ui/button";
 import { Card } from "@repo/ui/card";
 import { handleDuesMerchant } from "../app/lib/actions/handleDuesMerchant";
 
-export const UserDues = ({dues, setDues} : {dues : { user: { number: string; name: string | null; }; userId: number; amount: number; }[]
-    , setDues : any}) => {
+export const UserDues = ({dues} : {dues : { user: { number: string; name: string | null; }; userId: number; amount: number; }[]}) => {
 
     return (
         <Card title="Dues">

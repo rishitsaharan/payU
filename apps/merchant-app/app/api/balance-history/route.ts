@@ -1,12 +1,14 @@
+'use server'
+
 import prisma from '@repo/db/client';
 import { getServerSession } from 'next-auth';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { authOptions } from '../../lib/auth';
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   console.log("balance history reached");
+  const session = await getServerSession(authOptions);
   try {
-    const session = await getServerSession(authOptions);
     const merchantId = session?.user?.id;
     if(!merchantId){
       return NextResponse.json({message : "Please login"})

@@ -29,10 +29,10 @@ export default function() {
                 </div>
                 <div className="flex flex-col">
                     <div className="mb-7">
-                        <UserDues dues={dues} setDues={setDues}/>
+                        <UserDues dues={dues}/>
                     </div>
                     <div>
-                        <CompletedDues completedDues={completedDues} setCompletedDues={setCompletedDues} />
+                        <CompletedDues completedDues={completedDues} />
                     </div>
                 </div>
             </div>

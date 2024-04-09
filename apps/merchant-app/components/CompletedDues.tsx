@@ -2,8 +2,7 @@
 
 import { Card } from "@repo/ui/card";
 
-export const CompletedDues = ({completedDues, setCompletedDues} : {completedDues : { user: { number: string; name: string | null; }; userId: number; amount: number; }[]
-    , setCompletedDues : any}) => {
+export const CompletedDues = ({completedDues} : {completedDues : { user: { number: string; name: string | null; }; userId: number; amount: number; }[]}) => {
     return (
         <Card title="Completed Dues">
             {completedDues.length != 0 ? completedDues.map((due, index) => <div key={index} className="flex flex-row justify-between items-center px-4 py-2 mt-3">

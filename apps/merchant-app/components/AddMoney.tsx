@@ -1,9 +1,8 @@
 "use client"
 import { Button } from "@repo/ui/button";
 import { Card } from "@repo/ui/card";
-import { Center } from "@repo/ui/center";
 import { Select } from "@repo/ui/select";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { TextInput } from "@repo/ui/textInput";
 import { handleOnRampTransactions } from "../app/lib/actions/handleOnRampTransactions";
 
@@ -37,6 +36,7 @@ export const AddMoney = () => {
         <div className="flex justify-center pt-4">
             <Button onClick={async () => {
                 const response = await handleOnRampTransactions(amount * 100, provider);
+                console.log(redirectUrl);
                 alert(response.message);
             }}>
                 Add Money

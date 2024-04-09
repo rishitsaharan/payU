@@ -1,5 +1,5 @@
 'use client'
-
+/// <reference types="node" />
 import { Card } from "@repo/ui/card"
 import { TextInput } from "@repo/ui/textInput";
 import { useState } from "react";
@@ -19,6 +19,7 @@ export const Users = ({users} : {users : { number: string; id: number; name: str
         return (...args: Params) => {
           clearTimeout(timer)
           timer = setTimeout(() => {
+            console.log(args);
             func(...args)
           }, timeout)
         }
