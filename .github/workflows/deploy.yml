@@ -18,7 +18,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build and Push Docker image
+    - name: Build and Push Docker image User
       uses: docker/build-push-action@v2
       with:
         context: .
@@ -26,5 +26,27 @@ jobs:
         push: true
         tags: saharanrishit/paytmpro:user  # Replace with your Docker Hub username and repository
 
-    - name: Verify Pushed Image
-      run: docker pull saharanrishit/paytmpro:user  # Replace with your Docker Hub username and repository
+    - name: Build and Push Docker image Merchant
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        file: ./docker/Dockerfile.merchant
+        push: true
+        tags: saharanrishit/paytmpro:merchant
+
+    - name: Build and Push Docker image Bank
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        file: ./docker/Dockerfile.bank
+        push: true
+        tags: saharanrishit/paytmpro:bank
+
+    - name: Verify Pushed Image User
+      run: docker pull saharanrishit/paytmpro:user 
+
+    - name: Verify Pushed Image Merchant
+      run: docker pull saharanrishit/paytmpro:merchant
+
+    - name: Verify Pushed Image Bank
+      run: docker pull saharanrishit/paytmpro:bank 
