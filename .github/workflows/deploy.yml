@@ -51,7 +51,6 @@ jobs:
     - name: Verify Pushed Image Bank
       run: docker pull saharanrishit/paytmpro:bank 
 
-
     - name: Deploy to EC2 User
       uses: appleboy/ssh-action@master
       with:
