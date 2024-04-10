@@ -52,7 +52,7 @@ jobs:
       run: docker pull saharanrishit/paytmpro:bank 
 
 
-    - name: Deploy to EC2
+    - name: Deploy to EC2 User
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
