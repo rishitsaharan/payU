@@ -7,6 +7,8 @@ export const AppbarClient = () => {
     const session = useSession();
     const router = useRouter();
 
+
+    
     async function handleSignOut(){
         await signOut();
         router.push("/api/auth/signin");
