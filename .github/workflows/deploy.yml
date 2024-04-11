@@ -73,4 +73,4 @@ jobs:
           sudo docker pull saharanrishit/paytmpro:merchant
           sudo docker stop merchant-app || true
           sudo docker rm merchant-app || true
-          sudo docker run -d --name merchant-app -p 3000:3000 -e DATABASE_URL=${{ secrets.DATABASE_URL}} -e NEXTAUTH_URL=${{secrets.NEXTAUTH_URL_MERCHANT}} -e NEXTAUTH_SECRET=${{secrets.NEXTAUTH_SECRET}}  -e GOOGLE_CLIENT_ID={{secrets.GOOGLE_CLIENT_ID}} -e GOOGLE_CLIENT_SECRET={{secrets.GOOGLE_CLIENT_SECRET}} saharanrishit/paytmpro:merchant
+          sudo docker run -d --name merchant-app -p 3000:3000 -e DATABASE_URL=${{ secrets.DATABASE_URL}} -e NEXTAUTH_URL=${{secrets.NEXTAUTH_URL_MERCHANT}} -e NEXTAUTH_SECRET=${{secrets.NEXTAUTH_SECRET}}  -e GOOGLE_CLIENT_ID=${{secrets.GOOGLE_CLIENT_ID}} -e GOOGLE_CLIENT_SECRET=${{secrets.GOOGLE_CLIENT_SECRET}} saharanrishit/paytmpro:merchant
