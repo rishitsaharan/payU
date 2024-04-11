@@ -58,7 +58,7 @@ export const authOptions = {
         })
     ],
     secret: process.env.JWT_SECRET || "secret",
-    baseUrl : process.env.NEXTAUTH_URL_USER,
+    baseUrl : process.env.NEXTAUTH_URL_USER || "http://13.60.57.102:3000",
     callbacks: {
         // TODO: can u fix the type here? Using any is bad
         async session({ token, session }: any) {
