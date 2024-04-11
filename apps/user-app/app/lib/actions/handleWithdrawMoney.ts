@@ -33,7 +33,7 @@ export default async function handleWithdrawMoney(amount : number, provider : st
     })
 
     try{
-        const response = await axios.post(`http://localhost:3002/api/user/sendMoney`, {
+        const response = await axios.post(`${process.env.BANK_URL}/api/user/sendMoney`, {
             token,
             userId,
             amount

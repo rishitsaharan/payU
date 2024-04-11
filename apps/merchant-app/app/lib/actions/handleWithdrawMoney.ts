@@ -34,7 +34,7 @@ export default async function handleWithdrawMoney(amount : number, provider : st
     })
 
     try{
-        await axios.post(`http://localhost:3002/api/merchant/sendMoney`, {
+        await axios.post(`${process.env.BANK_URL}/api/merchant/sendMoney`, {
             token,
             merchantId,
             amount

@@ -29,7 +29,7 @@ export const handleOnRampTransactions = async (amount : number, provider : strin
     })
 
     try{
-        await axios.post(`http://localhost:3002/api/merchant/getMoney`, {
+        await axios.post(`${process.env.BANK_URL}/api/merchant/getMoney`, {
             token,
             merchantId,
             amount
