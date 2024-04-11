@@ -47,7 +47,7 @@ export default async function handleWithdrawMoney(amount : number, provider : st
             await prisma.balanceHistory.create({
                 data : {
                     userId : Number(userId),
-                    balance : updatedFromUser.balance - amount,
+                    balance : updatedFromUser.balance,
                     timestamp : new Date()
                 }
             })
