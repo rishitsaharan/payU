@@ -2,6 +2,6 @@
 module.exports = {
   transpilePackages: ["@repo/ui"],
   env : {
-    NEXTAUTH_URL: process.env.NEXTAUTH_URL_USER,
+    NEXTAUTH_URL:process.env.NEXTAUTH_URL_USER,
   }
 };
