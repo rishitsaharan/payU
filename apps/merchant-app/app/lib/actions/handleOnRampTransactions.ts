@@ -45,7 +45,7 @@ export const handleOnRampTransactions = async (amount : number, provider : strin
             await prisma.balanceHistoryMerchant.create({
                 data : {
                     merchantId : Number(merchantId),
-                    balance : updatedFromMerchant.balance + amount,
+                    balance : updatedFromMerchant.balance,
                     timestamp : new Date()
                 }
             })
