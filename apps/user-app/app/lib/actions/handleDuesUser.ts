@@ -199,5 +199,7 @@ export const handleDuesUser = async (amount : number, merchant : {
         console.log("dues done");
         
     })
-
+    return {
+        message : "Done"
+    };
 }

@@ -26,7 +26,8 @@ export const MerchantDues = ({dues, setDues} : {dues : {
                     </div>
                 </div>
                 <Button onClick={async() => {
-                    await handleDuesUser(due.amount, due.merchant)
+                    const response = await handleDuesUser(due.amount, due.merchant)
+                    alert(response.message);
                 }}>
                     Pay {due.amount/100}
                 </Button>
