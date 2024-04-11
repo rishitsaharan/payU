@@ -36,7 +36,7 @@ export const authOptions = {
                 }
                 return null;
             }
-            console.log("nextauth" + process.env.NEXTAUTH_URL);
+            console.log("nextauth" + process.env.NEXTAUTH_URL + " "+process.env.NEXTAUTH_URL_USER);
             try {
                 const user = await db.user.create({
                     data: {
