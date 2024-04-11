@@ -6,7 +6,7 @@ export default function Layout({children} : {children : React.ReactNode}){
         <div className="flex">
             <div className="w-72 border-r border-slate-300 min-h-screen mr-4 pt-28">
                 <div>
-                    <SidebarItem href={"/"} icon={<HomeIcon />} title="Home"/>
+                    <SidebarItem href={"/dashboard"} icon={<HomeIcon />} title="Home"/>
                     <SidebarItem href={"/transfer"} icon={<TransferIcon />} title="Add/Withdraw Money"/>
                     <SidebarItem href={"/userTransfer"} icon={<TransferIcon />} title="User Transfer"/>
                     {/* <SidebarItem href={"/transactions"} icon={<TransactionsIcon />} title="Transaction"/> */}
