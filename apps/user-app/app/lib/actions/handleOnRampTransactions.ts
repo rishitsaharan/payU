@@ -29,6 +29,7 @@ export const handleOnRampTransactions = async (amount : number, provider : strin
 
     try{
         console.log(`${process.env.BANK_URL}`);
+        
         const response = await axios.post(`${process.env.BANK_URL}/api/user/getMoney`, {
             token,
             userId,
