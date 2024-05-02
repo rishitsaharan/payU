@@ -41,6 +41,7 @@ export async function POST(req: NextRequest) {
         })
     }
     catch(err){
+      console.log(err);
         try{
           await db.user.update({
             where : {
